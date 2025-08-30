@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Google Homepage Clone</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="./google1.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Top Navigation Bar -->
+  <nav id="navdiv">
+    <a href="#">Gmail</a>
+    <a href="#">Images</a>
+    <a href="#"><i class="fa fa-bell"></i></a>
+    <a href="#"><i class="fa fa-user-circle"></i></a>
+    <button>Sign In</button>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <center>
+      <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_light_color_272x92dp.png" width="250" height="85" id="googleimg" alt="Google Logo">
+      <div id="maindiv">
+        <span><i class="fa fa-search"></i></span>
+        <span id="inputspan"><input type="text" placeholder="Search Google or type URL"></span>
+        <span><i class="fa fa-microphone"></i></span>
+      </div>
+      <section>
+        <button>Google Search</button>
+        <button>I'm Feeling Lucky</button>
+      </section>
+      <!-- Extra Feature -->
+      <div id="extra-feature">
+        <a href="#">Today's Trending Topics</a>
+      </div>
+      <div id="Bottomdiv">
+        <span>Google offered in:</span>
+        <ul>
+          <li><a href="#">हिन्दी</a></li>
+          <li><a href="#">বাংলা</a></li>
+          <li><a href="#">తెలుగు</a></li>
+        </ul>
+      </div>
+    </center>
+    <button onclick="toggleTheme()" id="theme-toggle">
+        <span id="mode-text">🎉 Celebration Mode</span>
+      </button>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <a href="#">Advertising</a>
+    <a href="#">Business</a>
+    <a href="#">Privacy</a>
+    <a href="#">Settings</a>
+  </footer>
+  <script>
+    function toggleTheme() {
+  var body = document.body;
+  var modeText = document.getElementById('mode-text');
+  if(body.classList.contains('celebration')) {
+    body.classList.remove('celebration');
+    body.classList.add('motivation');
+    modeText.textContent = '💪 Motivation Mode';
+  } else {
+    body.classList.remove('motivation');
+    body.classList.add('celebration');
+    modeText.textContent = '🎉 Celebration Mode';
+  }
+}
+  </script>
+</body>
+</html>

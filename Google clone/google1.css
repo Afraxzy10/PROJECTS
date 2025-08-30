@@ -1,0 +1,159 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #navdiv {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 16px 32px;
+    gap: 20px;
+    background: none;
+  }
+  
+  #navdiv a, #navdiv button {
+    text-decoration: none;
+    color: #333;
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  #navdiv .fa {
+    font-size: 20px;
+  }
+  
+  #googleimg {
+    margin: 100px 0 30px 0;
+  }
+  
+  #maindiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35%;
+    min-width: 300px;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    border-radius: 40px;
+    height: 40px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(100,100,100,0.05);
+  }
+  
+  #maindiv .fa {
+    margin: 0 14px;
+    color: #aaa;
+  }
+  
+  #inputspan {
+    flex: 1;
+  }
+  
+  #inputspan input {
+    border: none;
+    width: 100%;
+    outline: none;
+    padding: 8px;
+    font-size: 17px;
+  }
+  
+  section {
+    display: flex;
+    gap: 10px;
+    margin: 22px 0 12px 0;
+    justify-content: center;
+  }
+  
+  section button {
+    background: #f8f9fa;
+    color: #222;
+    padding: 10px 20px;
+    border: 1px solid #f8f9fa;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  section button:hover {
+    border: 1px solid #888;
+  }
+  
+  #extra-feature {
+    margin: 18px 0;
+    color: #1a73e8;
+  }
+  
+  #Bottomdiv {
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 22px 0;
+  }
+  
+  #Bottomdiv ul {
+    list-style: none;
+    display: flex;
+    gap: 12px;
+    margin-left: 9px;
+    padding-left: 0;
+  }
+  
+  footer {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    padding: 16px 0;
+    background: #f2f2f2;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+  }
+  
+  footer a {
+    color: #555;
+    text-decoration: none;
+  }
+  
+  footer a:hover {
+    text-decoration: underline;
+  }
+
+  body {
+    transition: background 0.3s, color 0.3s;
+  }
+  
+  /* Celebration/Light mode */
+  body.celebration {
+    background: linear-gradient(120deg, #FFEFBA, #FFFFFF 80%);
+    color: #222;
+  }
+  
+  body.celebration #mode-text {
+    color: #e67e22;
+  }
+  
+  body.celebration .feature-message {
+    font-weight: bold;
+    color: #2ecc71;
+  }
+  
+  /* Motivation/Dark mode */
+  body.motivation {
+    background: linear-gradient(120deg, #222, #444 80%);
+    color: #fff;
+  }
+  
+  body.motivation #mode-text {
+    color: #f1c40f;
+  }
+  
+  body.motivation .feature-message {
+    font-style: italic;
+    color: #f39c12;
+  }
