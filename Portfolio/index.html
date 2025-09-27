@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Afra - Data Analyst & AI Student</title>
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: #1f2937;
+      background: #f9fafb;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0; width: 100%;
+      padding: 1rem 0;
+      background: #ffffffee;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+    .nav-container {
+      max-width: 1200px; margin: auto;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0 2rem;
+    }
+    .logo {font-size: 1.8rem; font-weight: 800; color: #0f172a; text-decoration: none;}
+    .nav-menu {display: flex; list-style: none; gap: 2rem;}
+    .nav-menu a {color: #1e293b; text-decoration: none; font-weight: 500; position: relative;}
+    .nav-menu a::after {
+      content: ""; position: absolute; left: 0; bottom: -5px; width: 0; height: 2px;
+      background: #14b8a6; transition: 0.3s;
+    }
+    .nav-menu a:hover {color: #14b8a6;}
+    .nav-menu a:hover::after {width: 100%;}
+    .hamburger {display: none; flex-direction: column; cursor: pointer;}
+    .hamburger span {width: 25px; height: 3px; background: #1e293b; margin: 3px 0;}
+
+    /* Section offset fix */
+    section {scroll-margin-top: 80px;}
+
+    /* Hero */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      background: linear-gradient(135deg, #0f172a 0%, #14b8a6 100%);
+      color: white; padding: 2rem;
+    }
+    .hero-container {
+      max-width: 1200px; margin: auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
+    }
+    .hero h1 {font-size: 3rem; font-weight: 800; margin-bottom: 1rem;}
+    .role {font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem;}
+    .hero p {opacity: 0.9; margin-bottom: 2rem;}
+    .hero-buttons {display: flex; flex-wrap: wrap; gap: 1rem;}
+    .btn {
+      padding: 0.9rem 1.5rem; border-radius: 50px;
+      text-decoration: none; font-weight: 600; transition: 0.3s;
+    }
+    .btn-primary {background: white; color: #0f172a;}
+    .btn-primary:hover {background: transparent; border: 2px solid white; color: white;}
+    .btn-secondary {border: 2px solid white; color: white;}
+    .btn-secondary:hover {background: white; color: #0f172a;}
+
+    .profile-container {
+      width: 280px; height: 280px; border-radius: 50%;
+      background: rgba(255,255,255,0.1); border: 3px solid rgba(255,255,255,0.3);
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .profile-container img {width: 100%; height: 100%; object-fit: cover;}
+
+    /* About */
+    .about {padding: 6rem 2rem; background: #f8fafc;}
+    .about h2 {font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; text-align:center; color: #0f172a;}
+    .about p {max-width: 800px; margin: auto; color: #475569; text-align: center;}
+
+    /* Skills */
+    .skills {padding: 6rem 2rem; background: white;}
+    .skills h2 {text-align: center; font-size: 2.5rem; font-weight: 800; margin-bottom: 2rem;}
+    .skills-grid {
+      max-width: 1000px; margin: auto;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;
+    }
+    .skill-card {
+      background: #f9fafb; padding: 2rem; border-radius: 15px; text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s;
+    }
+    .skill-card:hover {transform: translateY(-5px);}
+    .skill-card i {
+      font-size: 2rem; color: #14b8a6; margin-bottom: 1rem;
+    }
+    .skill-tags {display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center;}
+    .skill-tags span {
+      background: #e2e8f0; padding: .4rem 1rem; border-radius: 20px; font-size: .85rem;
+    }
+
+    /* Experience */
+    .experience {padding: 6rem 2rem; background: #f8fafc;}
+    .experience h2 {text-align: center; font-size: 2.5rem; font-weight: 800; margin-bottom: 3rem;}
+    .timeline {max-width: 900px; margin: auto; border-left: 3px solid #14b8a6; padding-left: 2rem;}
+    .timeline-item {margin-bottom: 2rem; position: relative;}
+    .timeline-item::before {
+      content: ""; position: absolute; left: -33px; top: 8px; width: 16px; height: 16px;
+      background: #14b8a6; border-radius: 50%;
+    }
+    .timeline h3 {margin: 0; font-size: 1.2rem; color:#0f172a;}
+    .timeline .company {color:#475569; font-size:.9rem; margin-bottom:.3rem;}
+    .timeline p {color:#475569;}
+
+    /* Projects */
+    .projects {padding: 6rem 2rem; background: white;}
+    .projects h2 {text-align:center; font-size: 2.5rem; font-weight: 800; margin-bottom: 2rem;}
+    .projects-grid {
+      max-width: 1000px; margin: auto;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;
+    }
+    .project-card {
+      background:#f9fafb; border-radius:15px; padding:1.5rem;
+      box-shadow:0 5px 15px rgba(0,0,0,0.05); transition:.3s;
+    }
+    .project-card:hover {transform:translateY(-5px);}
+    .project-card i {font-size:2rem; color:#14b8a6; margin-bottom:1rem;}
+    .project-card h3 {margin-bottom:.5rem; color:#0f172a;}
+
+    /* Contact */
+    .contact {padding:6rem 2rem; background:#f8fafc;}
+    .contact h2 {text-align:center; font-size:2.5rem; font-weight:800; margin-bottom:2rem;}
+    .contact-container {
+      max-width: 1000px; margin:auto;
+      display: grid; grid-template-columns:1fr 1fr; gap:2rem;
+    }
+    .contact-item {display:flex; gap:1rem; align-items:center; background:white; padding:1rem; border-radius:12px; box-shadow:0 5px 15px rgba(0,0,0,.05);}
+    .contact-item i {font-size:1.5rem; color:#14b8a6;}
+    .contact-form {background:white; padding:2rem; border-radius:15px; box-shadow:0 5px 15px rgba(0,0,0,.05);}
+    .form-group {margin-bottom:1rem;}
+    .form-group label {display:block; margin-bottom:.5rem;}
+    .form-group input,.form-group textarea,.form-group select {
+      width:100%; padding:.8rem; border:1px solid #e2e8f0; border-radius:8px;
+    }
+    .submit-btn {
+      padding:.9rem 1.5rem; border:none; border-radius:8px;
+      background:#14b8a6; color:white; font-weight:600; cursor:pointer;
+    }
+    .submit-btn:hover {background:#0d9488;}
+
+    /* Footer */
+    footer {background:#0f172a; color:white; text-align:center; padding:2rem;}
+    .social-links {display:flex; justify-content:center; gap:1rem; margin-bottom:1rem;}
+    .social-links a {color:white; font-size:1.5rem; transition:.3s;}
+    .social-links a:hover {color:#14b8a6;}
+
+    /* Responsive */
+    @media (max-width:900px) {
+      .hero-container {grid-template-columns:1fr; text-align:center;}
+      .contact-container {grid-template-columns:1fr;}
+      .nav-menu {
+        display:none; flex-direction:column; background:white; position:absolute;
+        top:100%; left:0; width:100%; padding:1rem 0;
+      }
+      .nav-menu.active {display:flex;}
+      .hamburger {display:flex;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">AFRA</a>
+      <ul class="nav-menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="hero-container">
+      <div class="hero-content">
+        <h1>Hi, I'm Afra</h1>
+        <div class="role">Student</div>
+        <p>Aspiring Data Analyst and B.Tech student in Artificial Intelligence and Data Science. Passionate about transforming data into actionable insights.</p>
+        <div class="hero-buttons">
+          <a href="#projects" class="btn btn-primary">View My Work</a>
+          <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+          <a href="./assets/Afra Resume.docx" target="_blank" class="btn btn-primary"><i class="fa-solid fa-file-pdf"></i> Resume</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="profile-container">
+          <img src="./assets/img/My photo.jpg" alt="Afra">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about">
+    <h2>About Me</h2>
+    <p>
+      I'm an aspiring Data Analyst with strong analytical and problem-solving skills.
+      Proficient in SQL, Python, Excel, Power BI, and Tableau for data analysis and visualization.
+    </p>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="skills">
+    <h2>Skills & Expertise</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <i class="fa-solid fa-code"></i>
+        <h3>Programming</h3>
+        <div class="skill-tags">
+          <span>Python</span><span>R</span><span>SQL</span><span>JavaScript</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <i class="fa-solid fa-chart-line"></i>
+        <h3>Data Visualization</h3>
+        <div class="skill-tags">
+          <span>Power BI</span><span>Tableau</span><span>Excel</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <i class="fa-solid fa-database"></i>
+        <h3>Databases</h3>
+        <div class="skill-tags">
+          <span>MySQL</span><span>Power Query</span><span>NumPy</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <i class="fa-solid fa-robot"></i>
+        <h3>AI/ML Tools</h3>
+        <div class="skill-tags">
+          <span>Scikit-learn</span><span>NLP</span><span>GitHub</span><span>Jupyter</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="experience">
+    <h2>Experience</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>AI/ML Intern</h3>
+        <div class="company">Scion R&D — Jul 2025 – Aug 2025</div>
+        <p>Worked on NLP and dataset analysis, contributing to AI/ML research projects.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>Associate Trainee</h3>
+        <div class="company">Technosprint — Nov 2024 – Apr 2025</div>
+        <p>Built Power BI dashboards, improving efficiency by 25% and client acquisition by 30%.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="projects">
+    <h2>Featured Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <i class="fa-solid fa-chalkboard"></i>
+        <h3>Udemy Course Dashboard</h3>
+        <p>Interactive Power BI dashboard analyzing course data with KPIs and trends.</p>
+      </div>
+      <div class="project-card">
+        <i class="fa-solid fa-paintbrush"></i>
+        <h3>AI Poster Generation</h3>
+        <p>Research on AI-powered poster generation using ML models for design automation.</p>
+      </div>
+      <div class="project-card">
+        <i class="fa-solid fa-code"></i>
+        <h3>Architectural Showcase Responsive Website</h3>
+        <p>•	Developed a responsive website showcasing over 50 architectural and interior design projects</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <h2>Contact</h2>
+    <div class="contact-container">
+      <div>
+        <div class="contact-item"><i class="fa-solid fa-envelope"></i><span>afraxzy10@gmail.com</span></div>
+        <div class="contact-item"><i class="fa-solid fa-phone"></i><span>+91 7708341730</span></div>
+        <div class="contact-item"><i class="fa-brands fa-linkedin"></i><span>linkedin.com/in/afra-m-776a9a306</span></div>
+      </div>
+      <form class="contact-form" onsubmit="submitForm(event)">
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" required/>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" required/>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea rows="5" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="social-links">
+      <a href="https://linkedin.com/in/afra-m-776a9a306"><i class="fa-brands fa-linkedin"></i></a>
+      <a href="#"><i class="fa-brands fa-github"></i></a>
+      <a href="mailto:afraxzy10@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+    </div>
+    <p>© 2025 Afra. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    function toggleMenu(){document.querySelector('.nav-menu').classList.toggle('active');}
+    function submitForm(e){e.preventDefault();alert("Thanks! I'll get back to you soon."); e.target.reset();}
+  </script>
+</body>
+</html>
